@@ -1,0 +1,101 @@
+Hierarchical Clustering
+
+Clustering -> Pengelompokkan (Unsupervised)
+Klasifikaasi -> Labelling (Supervised)
+
+Contoh ada mahasiswa sebanyak 50orang ada 3 keelompok
+	1. kelompok jaringan
+	2. kelompok ai
+	3. kelompok front end
+	
+Cara Hierarchical Clustering
+	1. Cara Mencari Cluster yan Mirip
+		=> misal si a ini mirip siapa
+		=> jadi harus ngukur jarak pake dis(similiarity)
+		=> datanya biasanya di representasikan dengan point
+		=> cara nyari jaraknya itu ppake rumus, rumusnya banyak macam, salah satunya manhattan distance, cara kedua euclidean distance
+	
+Contoh Soal
+	=> Manhattan + Single Link
+	P1 (5,4)
+	P2 (11,5)
+	P3 (12,9)
+	P4 (8,2)
+	
+STEP BY STEP
+	1. Tentukan dis similiarity pake apa (manhattan/ euclidean distance)
+	2. Teentukan Linkage Method	
+		a. Single Link Method (min)
+		b. Coplete Link (max)
+		c. Ward 
+		d. Centroid (titik tengah antara cluster)
+		e. Average => Hierarchical Clustering diturunkan jadi K Means
+	3. Buat Tabel Jarak setiap titik/ cluster
+	4. Cari pasangan titik/ cluster yang nilainya terkecil (kalo kasusnya pake linkage method single link), tapi hanya pilih salah satu
+	5. Coret sell yang dipilih pada table dan buat table baru
+	6. Yang tercoret perbarui nilai jaraknya karena pake linkage cari jarak yang terkecil antara pasang kluster lain
+	7.	Ulangi Langkah 3 dan 6 Hingga tercapai 1 cluster akhir
+	8. buat dendogram sesuai pasangan cluster yang terbuat dari awal
+	Manhattan Distance = | x 1 − x 2 | + | y 1 − y 2 |
+	contoh table
+		P1	P2	P3	P4
+	P1	0	7	12	5
+	P2	7	0	5	6
+	P3	12	5	0	11
+	P4	5	6	11	0
+		a. pilih salah satu pasangan terkecil nilainya, misal p1, p4
+		b. buat table baru dan perbarui nilai yang terdampak (nilai yang terdampak adalah nilai yang digaris secara horizontal dan vertikal oleh cell yang dipilih
+		c. tabel baru
+				P1,P4	P2	P3
+		P1,P4	0		6	11		
+		P2		6		0	5	
+		P3		11		5	0
+		
+		d. pilih lagi p2, p3
+				P1,P4		P2,P3		
+		P1,P4	0			6			
+		P2,P3	6			0
+		
+		e. pilih p2, p3
+							p1,p4,p2,p3
+			p1,p4,p2,p3			0
+		f. Hasil dendogram secara agglomerative ( ((p1,p4), (p2,p3)) )
+			
+			
+K-Means
+	- 1 Juta -> 2 Cluster -> Infinitie Loop
+	- Letak Centroid Tidak Fixed (Fluktuatif) semisal data bertamah centroid akan diperbarui
+	- Misal ada 2 centroid centroid a dan centroid B, nah si A itu nilai centroidnya 3 si B nilai centroidnya 5 nah kalo ketambahan data itu diperbarui pake rata rata nyari
+	- Formula Centroid
+		Centroid = ((x1 + x2 + x3)/3, (y1 + y2 + y3)/3) 
+		- note sebenarnya gak harus penamabahan data memperbarui centroid tapi setiap iterasi
+	- Iterasi Kluster optimal itu kalo titik yang sama masuk kluster yang sama lebih dari 2x
+	- iterasi awal centroid di init secara bebas
+	
+	- Praktek
+			P1=(1,5)
+			P2=(8,8)
+			P3=(8,2)
+			P4=(5,1)
+			
+		- Inisialisasi K = 2, misal ambil centroid p1 dan p2
+			c1, c2 = p1, p4
+		- Hitung euclidean distancenya setiap titik terhadap centroid
+		
+			TABLE CLUSTER
+				C1	C2		Result
+			P1	0	7.2		C1
+			P2 4.2	7.6		C1
+			P3 4.2	3.1		C2
+			P4 7.2	0		C2
+			
+		- Iterasi lagi untuk validasi cluster, karena cluster dikatakan sudah optimal ketika setiap data masuk di cluster yang sama dari iterasi i dan iterasi i+1
+			- perbarui nilai centroid dari setiap cluster
+			C1 = avgx(p1,p2), avgy(p1,p2) => karena p1 dan p2 masuk cluster 1 (berdasarkan hasil iterasi sebelumnya
+			C2 = avgx(p3,p4), avgy(p3,p4) => karena p3 dan p4 masuk cluster 2 
+				C1	C2		Result
+			P1	2.1	5.7		C1
+			P2	2.1	6.6		C1
+			P3	4.7	1.5		C2
+			P4	7.1	1.5		C2
+					

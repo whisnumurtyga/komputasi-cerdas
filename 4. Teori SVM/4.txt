@@ -1,0 +1,96 @@
+Support Vector Machine (SVM)
+
+1. Pendahuluan
+	- Klasifikasi adalah pengelompokan berLabel 
+	- patokan dari data latih
+	- jadi kalo ada data masuk ciri cirinya mirip kelas a (misal) jadi dia dimasukkan kelas a)
+	
+2. SVM	
+	- Contoh algoritma klasifikasi
+	- Untuk klasifikasi atau regresi
+	- seperti cuaca atau dll
+	- Supervised Learning belajar dulu dari data latih, contoh kalo label iris setosa itu petal sepal length widthnya segini segini, jadi kalo ada data baru mereka tinggal nyocokin aja dia itu lebih ke mana
+	
+3. Proses
+	- Ada plot terus kita membuat garis (hyperplane) yang paling bagus dalam membagi kumpulan plot tersebut menjadi 2 class
+	- Maximize the margin (jarak antar kelompok itu harus sejauh mungkin (maximize))
+	- support vector itu titik plot yg terdekat dengan batas margin terluar
+	- Secara matematis persamaan kelas pertama itu = 1 kalo klass 1 nya = -1 kalo hyper plane = 0
+
+4. How to handle data with outliers?
+	- kita harus nambah 1 variable lagi (karenna kalo kita maksa buat hyperplane nanti dia masuk ke klass lain)
+	- variabel yang ditambahkan adalah error jadi persamaannya berubah menjadi  1 - E dan -1 + E
+	
+5. Apakah margin bisa diubah ?
+	- bisa menggunakan parameter ciri
+	- parameter c adalah hyperparameter yang menentukan trade off antara maximixing the margin between classes and minimizing the classification error on the training data 
+	- karena kalo margin gede itu makin rentan error, terus ada data didalam margin berarti tandanya trainingnya jelek tapi testingnya bagus karena dia nanti dianggap error (epsilon)
+	- kalo margin kecil tapi ada error di margin (trainingnya bagus) tapi misal ada data baru dia salah (testing jelek)
+	- maka dari itu harus hati hati kalo setting margin
+	- c itu kebalikan margin, kalo c gede margin kecil dan sebaliknya
+	- ada data training yang masuk ke dalam margin kalo nggak trainingnya jadi 100% karena tidak ada masuk ke margin datanya tapi kalo ada data baru dia masuk di dalam margin dia masih bener karena dianggap error itu
+	- berarti margin gak boleh ngepotong bagus banget?
+	- kita mau bikin sensitif atau toleran, kalo sensitif c nya kecil kalo c gede toleran
+	
+6. Soft Margin 
+	- c is small svm more tolerant
+	- allow for a wider margin between classes which is desirable when the data is noisy or when there outliers
+	- The model may mmisclassify some training data points but is likely to generalize beter to unseen data
+	
+7. Hard Margin	
+	- Kalo miss clasifikasi dia penalty nya lebih gede 
+	- Modelnya mirip dengan data training (over fitting) tapi kalo nerima data baru dia akan jelek banget
+	
+8. Kalo Plotnya saling melingkar  gimana spraate datanya, gimana persamaan untuk hyperplanenya ?
+	- Maka dari itu SVM itu ada 2 jenis linear dan non linear 
+	- linear y = x + c 
+	- Kalo non linear pake Kernel Trick 
+		- Kernel methods owe their name to the use of kernel functions wich enable the to operate in a high - dimensional implicit feature space
+		- jadi kita harus ngeproyeksikn 2 dimensi ke dimensi lain
+		- feature spacenya implisit (kita menambahkan feature bantuan untuk memudahkan klasifikasian)
+		- tapi kita gk perlu nentuin koordinatnya berapa
+		- karena kernel cuman mentransformasikan 2d ke 3d 
+		- simplenya diitung product dari titik data aslinya
+	-
+	
+	
+9. Kernel Trick 
+	- Rumus K(x,y) = v(x) x v(y) (dot product vector 2d)
+	
+10. Jenis SVM
+	- Linear, Polynomial, RBF, Sigmoid
+	- Linear Kernel = x.y
+	- Polynomial Kernel
+	- RBF/ Gaussian Kernerl 
+	- Sigmoid Kernel
+	
+11. Hati hati kalo pake svm kernelnya di perhatikan
+	- Misal SVM hasil 50% tapi random forest 90% padahal temen kalian svm nya 90% nah itu karena variable c hyperp arameternya beda dan kernelnya beda
+	
+12. Benefits dan Draw Backs
+	Keuntungan
+		- Effective di high dimensional spaces (fiturnya banyak)
+		- Robust to overfitting (karena bisa otak atik parameter c)
+		- bisa milih mau bagusin testing, atau training
+		- works well with small to memdium-sized datasets
+		- global optimum (tetap akan mencari hasil akhir sesuai dengan kalian tentukan diawal)
+	Kekurangan
+		- Kekurangannya sentifiv di keernel choice, kalo kernelnya berubah hasil klasifikasi juga berubah
+		
+13. Cara SVM Mengklasifikasikan lebih dari 2 kelas
+	A. One vs One 
+		- Kelas 1 
+			- 1 v 2
+			- 1 v 3
+			- 1 v 4
+			- 1 v 5
+		- Kelas 2
+			- 2 v 1 (dia satu satu)
+	
+	B. One vs All
+		- Kelas 1 vs 2,3,4,5 (kelas lain itu dianggap 1 class)
+		- Kelas 2 vs 1,3,4,5
+		- Kelas 3 vs 1,2,4,5
+		- Kelas 4 vs 1,2,3,5
+		- Kelas 5 vs 1,2,3,4
+	C. Classifier itu bikin garis

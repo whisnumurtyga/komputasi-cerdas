@@ -1,0 +1,68 @@
+==> Kontrak Kuliah 
+
+1. Matematisnya banyak 
+2. Projek Akhir 2orang tulis 
+3. Kalkulator 
+4. Istirahat Duhur
+5. Tugasnya bentuknya kebanyakan ngoding
+6. Kalo telat ngumpulin tugas nilainya cuman 70
+
+Tugas 30%
+Kuis 10%
+UTS 20%
+UAS 30%
+Keaktifan 10%
+
+
+
+Prediksi, Klasifikasi, Clustering
+Algoritma:
+	ANN Multi Layer
+	HIERARCHAL CLUSTERING
+	SVM 
+
+Optimasi Genetic Algorithm dan Particle Swarm Optimization
+
+Tugas Besar
+1. Nerapin Algoritma Klasifikasi/ Klustering tapi di Optimasi (HC, SUM, ANN, REINFORCEMENT)
+2. dataset bebas tapi disaranin di kaggle
+
+Materi
+1. Implementasi Komputasi Cerdas
+	- Rekomendasi Video Youtube, Rekomendasi Lagu Spotify, Chat GPT
+2. Komputasi Cerdas
+	- Kecerdasan adalah kemampuan untuk memahami dan beradaptasi dengan 
+	- Karakteristik Kecerdasan
+		a. perception
+		b. Aksi 
+		c. Logic
+		d. Problem Solving
+		e. Learning and Adapt
+		f. Social
+		g. Creativity
+3. Computational Intelligence
+	- Bagaimana komputer iu dia belajar tentnag tugas tugas tertentu belajar dari data atau observasi tertentu
+	- diibaratkan komputer itu meniru perilaku manusia, nature dan lingkungan
+	- Paradigm of Intelligent Computing
+		a. AI => mereplika manusia ke dalam mesin
+		b. Komputasi Cerdas => Menciptakan sistem yang dia meniru pola perilaku alam
+			1. Artificial Immnune System
+			2. Evolutionary Computational
+			3. Swarm Intelligence
+			4. Fuzzy System
+			5. Neural Network
+		c. SVM (contoh irisan antara ai dan komputasi cerdas)
+			- ada diagram kartesius terus titik titik data 
+			- nah kita nanti ada variabel c dari 0-1 itu untuk memotong kumpulan data jadi 2 data
+			- ada juga variabel kernel biar garisnya itu gak lurus 
+			
+	- Application Type
+		- Prediksi
+		- Klasifikasi 
+		- Clustering
+	- Learning Algoerirthm 
+		1. Supervised
+		2. Unsupervised
+		3. Semisupervised
+		4. Reinforcement 
+4. Tugas Dataset Iris pake Hierarchical Clustering
